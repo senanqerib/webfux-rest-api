@@ -46,7 +46,6 @@ class UserRouterTest {
         User user1 = new User("John", "Doe", "johndoe");
         User user2 = new User("Jane", "Doe", "janedoe");
 
-        UserRepository userRepository = Mockito.mock(UserRepository.class);
         Flux<User> userFlux = Flux.just(user1, user2);
         when(userRepository.findAll()).thenReturn(userFlux);
         DataHandler dataHandler = Mockito.mock(DataHandler.class);
@@ -62,7 +61,7 @@ class UserRouterTest {
                 .expectBody()
                 .jsonPath("$").isArray()
                 .jsonPath("$").isNotEmpty()
-                .jsonPath("$[0].id").isEqualTo(users[0].getId().toString());
+                .jsonPath("$[0].id").isEqualTo(users[0].getId());
     }
 
 
@@ -70,7 +69,6 @@ class UserRouterTest {
     void testGetAllUsers() {
         User user1 = new User("John", "Doe", "johndoe");
         User user2 = new User("Jane", "Doe", "janedoe");
-        UserRepository userRepository = Mockito.mock(UserRepository.class);
         Mockito.when(userRepository.findAll()).thenReturn(Flux.just(user1, user2));
 
 

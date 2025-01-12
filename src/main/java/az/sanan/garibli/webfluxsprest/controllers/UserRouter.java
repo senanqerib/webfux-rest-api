@@ -19,7 +19,7 @@ public class UserRouter {
                 .GET("/user/{id}", handler::getUserById)
                 .build()
                 .andRoute(POST("user"), handler::saveData)
-                .andRoute(GET("users"), rr -> handler.getAllUsers());
+                .andRoute(GET("users"), users -> handler.getAllUsers());
 
     }
 }
