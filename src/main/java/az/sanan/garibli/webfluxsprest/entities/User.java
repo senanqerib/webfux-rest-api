@@ -10,6 +10,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 @Getter
 @Setter
+@ToString
 @Table(name = "users")
 public class User {
     @Id
